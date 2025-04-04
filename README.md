@@ -3,7 +3,7 @@
 ## Group Members
 Collin Blake
 
-## (Where your data comes from) Background
+## Background
 
 - title of paper
 - authors
@@ -24,7 +24,7 @@ Collin Blake
 - write out whole pipeline ...
 - how did you visualize your results (R, python,  qiime2 visualizer, etc)
 
-### Example (Of a single tool)
+### Tools:
 #### FastQC
 FastQC did a quality control check on the raw sequence fastq data. It produced a series of plots and statistics that assessed the quality of the data. The output of FastQC was an HTML report that included per-base quality scores, GC content, and adapter content.
 
@@ -32,7 +32,7 @@ FastQC did a quality control check on the raw sequence fastq data. It produced a
 ...
 
 ## Findings
-![plot](../figures/venn.png)
+- Figures
 - Label figure (Figure1)
 - What kind of plot is it? (Venn Diagram)
 - What does the plot show (the number of unique genes in each sample, the number of genes shared between samples)
