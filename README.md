@@ -1,7 +1,7 @@
-# (Project Title) GEN711/811 Final Project
+# 18S Barcoding in Wild Canid Respiratory Microbiome
 
-## (Group Members) By:
-Niall, Zayn, Harry, Liam, Louis
+## Group Members
+Collin Blake
 
 ## (Where your data comes from) Background
 
