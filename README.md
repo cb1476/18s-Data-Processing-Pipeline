@@ -80,7 +80,9 @@ Collin Blake
 
 
 ## Findings
-
+![Barplot](https://github.com/user-attachments/assets/cc8970d9-6114-4b84-b157-889026245706)
+![Barplot Legend](https://github.com/user-attachments/assets/bc6ca20c-2bb6-4f81-aac7-6d8e47c356f2)
+Figures 1 and 2 (Taxonomic barplot with legend)
 
 
 ## References
