@@ -4,7 +4,7 @@
 Collin Blake
 
 ## Background (work in progress)
-My data is not linked to a published research paper -- it comes from an ongoing research project seeking to characterize the respiratory microbiome of canids (wild and domestic) presenting with respiratory disease. A proposal for the study was submitted to the American Kennel Club, who has agreed to sponsor the project. The principal investigator for this study is David Needle, DVM DVCAP, and the running title for the proposal is "Characterizing potential novel CIRD pathogen and CIRD microbiome perturbations." Currently, the main focus of the research team is to characterize a novel respiratory mycoplasma suspected to induce respiratory disease in domestic canines; in the proposal, the primary pathogen of interest is referred to as "BARDID" (Bacteria Associated with Respiratory Disease In Dogs). Aside from characterizing BARDID, a secondary goal of the research team is to broadly describe the respiratory microbiome in canids; to this end, they have performed 16s and 18s barcoding to understand the composition of the respiratory microbiome of cainds. The majority of samples being tested are from domestic canines (canis familiaris), but respiratory tissue samples from the NHVDL biobank have also been included in order to explore the respiratory microbiomes of other canids -- specifically red foxes and grey foxes (Vulpes vulpes and Urocyon cinereoargenteus, respectively). My dataset includes multiplexed paired-end fastqs for the 18S barcodes of eukaryotic microbiota in 6 wild foxes and 1 domestic dog for which bulk tissue DNA extraction has been performed, followed by PCR amplification with the V4 18s primer and sequencing in the Illumina NovaSeq 6000 instrument with a read length of 250bp. The goal of my study is to analyze the multiplexed fastq files gained from 18S metabarcoding to identify the eukaryotic microbiota in wild canids (specifically red foxes and grey foxes). I will discuss discuss patterns in co-ocurrence of specific eukaryotic taxa within the respiratory microbiomes of canids whose tissues underwent 18S metabarcoding. From such data, I can speculate on how the oc-presence of certain taxa within single hosts could affect both host immune responses and impact host mortality. There is no scientific literature (that I could find) on 18S metabarcoding in wild canids, so the data I'll present will hopefully provide new insights on the eukaryotic species that could contribute to respiratory disease in foxes from New Hampshire.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My data is not linked to a published research paper -- it comes from an ongoing research project seeking to characterize the respiratory microbiome of canids (wild and domestic) presenting with respiratory disease. A proposal for the study was submitted to the American Kennel Club, who has agreed to sponsor the project. The principal investigator for this study is David Needle, DVM DVCAP, and the running title for the proposal is "Characterizing potential novel CIRD pathogen and CIRD microbiome perturbations." Currently, the main focus of the research team is to characterize a novel respiratory mycoplasma suspected to induce respiratory disease in domestic canines; in the proposal, the primary pathogen of interest is referred to as "BARDID" (Bacteria Associated with Respiratory Disease In Dogs). Aside from characterizing BARDID, a secondary goal of the research team is to broadly describe the respiratory microbiome in canids; to this end, they have performed 16s and 18s barcoding to understand the composition of the respiratory microbiome of cainds. The majority of samples being tested are from domestic canines (canis familiaris), but respiratory tissue samples from the NHVDL biobank have also been included in order to explore the respiratory microbiomes of other canids -- specifically red foxes and grey foxes (Vulpes vulpes and Urocyon cinereoargenteus, respectively). My dataset includes multiplexed paired-end fastqs for the 18S barcodes of eukaryotic microbiota in 6 wild foxes and 1 domestic dog for which bulk tissue DNA extraction has been performed, followed by PCR amplification with the V4 18s primer and sequencing in the Illumina NovaSeq 6000 instrument with a read length of 250bp. The goal of my study is to analyze the multiplexed fastq files gained from 18S metabarcoding to identify the eukaryotic microbiota in wild canids (specifically red foxes and grey foxes). I will discuss discuss patterns in co-ocurrence of specific eukaryotic taxa within the respiratory microbiomes of canids whose tissues underwent 18S metabarcoding. From such data, I can speculate on how the oc-presence of certain taxa within single hosts could affect both host immune responses and impact host mortality. There is no scientific literature (that I could find) on 18S metabarcoding in wild canids, so the data I'll present will hopefully provide new insights on the eukaryotic species that could contribute to respiratory disease in foxes from New Hampshire.
  
 
 ## Methods:
@@ -33,47 +33,54 @@ My data is not linked to a published research paper -- it comes from an ongoing 
 &nbsp;&nbsp;&nbsp;&nbsp;This step of the pipeline was included to convert the paired-end fastq files into a qiime artifact (in .qza format). 
 
 #### CutAdapt: “qiime cutadapt trim-paired”
-Using my “fw” and “rv” variables defined in a previous step, I used the CutAdapt tool to trim primers from the reads that had them, and for reads that didn’t have the primers, the tool discarded them to ensure that only properly-amplified 18s barcodes were retained for use in later steps of the pipeline
+&nbsp;&nbsp;&nbsp;&nbsp;Using my “fw” and “rv” variables defined in a previous step, I used the CutAdapt tool to trim primers from the reads that had them, and for reads that didn’t have the primers, the tool discarded them to ensure that only properly-amplified 18s barcodes were retained for use in later steps of the pipeline
 
 #### DADA2: “qiime dada2 denoise-paired”
-Denoising with DADA2 was done for the purposes of error correction and chimeric removal, merging of paired-end reads, the production of a feature table listing the counts of ASVs in each sample, and a rep-seqs table listing the denoised, merged sequences that were the best-representatives for each ASV.
+&nbsp;&nbsp;&nbsp;&nbsp;Denoising with DADA2 was done for the purposes of error correction and chimeric removal, merging of paired-end reads, the production of a feature table listing the counts of ASVs in each sample, and a rep-seqs table listing the denoised, merged sequences that were the best-representatives for each ASV.
 
 #### “qiime feature-classifier extract-reads”
-This tool was used to acquire the regions of the full-length 18S rRNA genes that specifically matched the V4-18s primers; these specific regions were extracted from the SILVA reference database, containing 18S rRNA gene sequences for a large range of organisms. 
+&nbsp;&nbsp;&nbsp;&nbsp;This tool was used to acquire the regions of the full-length 18S rRNA genes that specifically matched the V4-18s primers; these specific regions were extracted from the SILVA reference database, containing 18S rRNA gene sequences for a large range of organisms. 
 
 #### “qiime feature-classifier fit-classifier-naive-bayes”
-This tool was used to train a naive bayes classifier on my reference sequences and taxonomy, which was necessary for later steps of the pipeline involving alignment of the ASV to the correct taxa
+&nbsp;&nbsp;&nbsp;&nbsp;This tool was used to train a naive bayes classifier on my reference sequences and taxonomy, which was necessary for later steps of the pipeline involving alignment of the ASV to the correct taxa
 
 #### “qiime feature-classifier classify-hybrid-vsearch-sklearn”
-This tool was used for the purpose of classifying the rep-seqs (from denoising) using a hybrid classifier that classified sequences using a global alignment tool (Vsearch) and a machine learning program (sklearn). I used the hybrid classifier for my *first* round of feature classification, but because not all of my ASVs mapped to a taxa given the strict parameters set for the hybrid alignment tool, I opted to use the regular, non-hybrid “qiime feature-classifier classify-sklearn” tool for my second round of feature classification (and I used a lower confidence threshold in the second round as well). 
+&nbsp;&nbsp;&nbsp;&nbsp;This tool was used for the purpose of classifying the rep-seqs (from denoising) using a hybrid classifier that classified sequences using a global alignment tool (Vsearch) and a machine learning program (sklearn). I used the hybrid classifier for my *first* round of feature classification, but because not all of my ASVs mapped to a taxa given the strict parameters set for the hybrid alignment tool, I opted to use the regular, non-hybrid “qiime feature-classifier classify-sklearn” tool for my second round of feature classification (and I used a lower confidence threshold in the second round as well). 
 
 #### “qiime taxa filter-table”
-I couldn’t initially make a barplot given how my first round of alignment missed some of the ASVs within my feature table, so I used this tool to filter the feature table so that it only included the ASVs that were classified at the initial confidence threshold of 0.7, removing all ASVs which were unassigned
+&nbsp;&nbsp;&nbsp;&nbsp;I couldn’t initially make a barplot given how my first round of alignment missed some of the ASVs within my feature table, so I used this tool to filter the feature table so that it only included the ASVs that were classified at the initial confidence threshold of 0.7, removing all ASVs which were unassigned
 
 #### “qiime feature-table summarize”
-Like I said, I had initial trouble with getting all my ASVs classified the first time around, so I used this tool just as a troubleshooting step in order to do a quality assessment of my denoising output. I was mostly just interested in getting an idea of the number of ASVs that I was dealing with in order to see the proportion of my total amount of ASVs that failed to get classified in the previous steps of the pipeline.
+&nbsp;&nbsp;&nbsp;&nbsp;Like I said, I had initial trouble with getting all my ASVs classified the first time around, so I used this tool just as a troubleshooting step in order to do a quality assessment of my denoising output. I was mostly just interested in getting an idea of the number of ASVs that I was dealing with in order to see the proportion of my total amount of ASVs that failed to get classified in the previous steps of the pipeline.
 
 #### “qiime metadata tabulate”
-Again, another troubleshooting tool that I used to create a table of ASVs which DID get assigned a taxon, since not all of them did. Like the previous tool, I was able to view the output (a .qzv file) in the online qiime2 viewer. From viewing the outputs of this tool and the last tool in the qiime2 viewer (and from viewing the outputs of various error messages on the command line), I was able to very painfully (manually) create a text file that contained ALL of the feature-IDs for the ASVs that didn’t get classified in the first round of alignment. 
+&nbsp;&nbsp;&nbsp;&nbsp;Again, another troubleshooting tool that I used to create a table of ASVs which DID get assigned a taxon, since not all of them did. Like the previous tool, I was able to view the output (a .qzv file) in the online qiime2 viewer. From viewing the outputs of this tool and the last tool in the qiime2 viewer (and from viewing the outputs of various error messages on the command line), I was able to very painfully (manually) create a text file that contained ALL of the feature-IDs for the ASVs that didn’t get classified in the first round of alignment. 
 
 #### “qiime feature-table filter-seqs”
-Using the aforementioned text file of ASVs that didn’t get classified in the first round of alignment, I used this tool to filter the original rep-seqs file from the denoising step in order to pull out only the rep-seqs for those ASVs that didn’t get classified. This new rep-seqs file was what I ran the second round of alignment on. 
+&nbsp;&nbsp;&nbsp;&nbsp;Using the aforementioned text file of ASVs that didn’t get classified in the first round of alignment, I used this tool to filter the original rep-seqs file from the denoising step in order to pull out only the rep-seqs for those ASVs that didn’t get classified. This new rep-seqs file was what I ran the second round of alignment on. 
 
 #### “qiime rescript merge-taxa”
-After the second round of alignment, I used this tool to merge the taxonomy tables from the first and second rounds of alignment to generate the final/complete taxonomy table containing the taxa that mapped to all of the feature-IDs for all of my ASVs.  
+&nbsp;&nbsp;&nbsp;&nbsp;After the second round of alignment, I used this tool to merge the taxonomy tables from the first and second rounds of alignment to generate the final/complete taxonomy table containing the taxa that mapped to all of the feature-IDs for all of my ASVs.  
 
 #### “qiime taxa filter-table”
-I used this tool to filter out all vertebrates from my merged taxonomy table because this study only focused on finding the microbes (invertebrates) among the 7 tissue samples that underwent sequencing. 
+&nbsp;&nbsp;&nbsp;&nbsp;I used this tool to filter out all vertebrates from my merged taxonomy table because this study only focused on finding the microbes (invertebrates) among the 7 tissue samples that underwent sequencing. 
 
 #### “qiime taxa barplot”
-This tool created a taxonomic barplot (a .qzv file) which I viewed in the qiime2 viewer. 
+&nbsp;&nbsp;&nbsp;&nbsp;This tool created a taxonomic barplot (a .qzv file) which I viewed in the qiime2 viewer. 
 
 ### Extra: The following tools were used to get my feature table into .tsv format from its original format (.qza) because that was the format needed to run the python script for my UpSet plot. Note: I put these commands into the script I used to make by barplot because I wasn’t sure if they would work in my python script:
 
 #### “qiime tools export”
-I used this tool to export the feature table (initially in .qza format) as a BIOM file
+&nbsp;&nbsp;&nbsp;&nbsp;I used this tool to export the feature table (initially in .qza format) as a BIOM file
 
 #### “biom convert”
-I used this tool to convert my BIOM feature table file into .tsv format using the previously-generated “feature-table.biom” file as the input. I couldn’t find a way to directly convert my .qza file into a .tsv file so this step was necessary. 
+&nbsp;&nbsp;&nbsp;&nbsp;I used this tool to convert my BIOM feature table file into .tsv format using the previously-generated “feature-table.biom” file as the input. I couldn’t find a way to directly convert my .qza file into a .tsv file so this step was necessary. 
 
+
+
+## Findings
+
+
+
+## References
 
