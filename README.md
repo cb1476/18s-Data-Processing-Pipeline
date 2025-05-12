@@ -105,21 +105,32 @@ Collin Blake
 
 ## References
 Needle, David B. “Characterizing Potential Novel CIRD Pathogen and CIRD Microbiome Perturbations.” American Kennel Club. 29 Feb. 2024. 
+
 Bokulich, Nicholas A., et al. “Optimizing Taxonomic Classification of Marker-Gene Amplicon Sequences with QIIME 2’s Q2-Feature-Classifier Plugin.” Microbiome, vol. 6, no. 1, 2018, p. 90, doi:10.1186/s40168-018-0470-z.
+
 Bolyen, Evan, et al. “Reproducible, Interactive, Scalable and Extensible Microbiome Data Science Using QIIME 2.” Nature Biotechnology, vol. 37, no. 8, 2019, pp. 852–57, doi:10.1038/s41587-019-0209-9.
 ---. “Reproducible, Interactive, Scalable and Extensible Microbiome Data Science Using QIIME 2.” Nature Biotechnology, vol. 37, no. 8, 2019, pp. 852–57, doi:10.1038/s41587-019-0209-9.
+
 Callahan, Benjamin J., et al. “DADA2: High-Resolution Sample Inference from Illumina Amplicon Data.” Nature Methods, vol. 13, no. 7, Nature Publishing Group, 2016, p. 581, doi:10.1038/nmeth.3869.
+
 Martin, Marcel. “Cutadapt Removes Adapter Sequences from High-Throughput Sequencing Reads.” EMBnet. Journal, vol. 17, no. 1, 2011, p. pp-10, doi:10.14806/ej.17.1.200.
+
 McDonald, Daniel, et al. “The Biological Observation Matrix (BIOM) Format or: How I Learned to Stop Worrying and Love the Ome-Ome.” GigaScience, vol. 1, no. 1, BioMed Central, 2012, p. 7, doi:10.1186/2047-217X-1-7.
 ---. “The Biological Observation Matrix (BIOM) Format or: How I Learned to Stop Worrying and Love the Ome-Ome.” GigaScience, vol. 1, no. 1, BioMed Central, 2012, p. 7, doi:10.1186/2047-217X-1-7.
+
 Pedregosa, Fabian, et al. “Scikit-Learn: Machine Learning in Python.” Journal of Machine Learning Research, vol. 12, no. Oct, 2011, pp. 2825–30.
 ---. “Scikit-Learn: Machine Learning in Python.” Journal of Machine Learning Research, vol. 12, no. Oct, 2011, pp. 2825–30.
+
 Pruesse, Elmar, et al. “SILVA: A Comprehensive Online Resource for Quality Checked and Aligned Ribosomal RNA Sequence Data Compatible with ARB.” Nucleic Acids Res, vol. 35, no. 21, 2007, pp. 7188–96.
 ---. “SILVA: A Comprehensive Online Resource for Quality Checked and Aligned Ribosomal RNA Sequence Data Compatible with ARB.” Nucleic Acids Res, vol. 35, no. 21, 2007, pp. 7188–96.
+
 Quast, Christian, et al. “The SILVA Ribosomal RNA Gene Database Project: Improved Data Processing and Web-Based Tools.” Nucleic Acids Res, vol. 41, no. Database issue, Oxford University Press, 2013, pp. D590-6.
 ---. “The SILVA Ribosomal RNA Gene Database Project: Improved Data Processing and Web-Based Tools.” Nucleic Acids Res, vol. 41, no. Database issue, Oxford University Press, 2013, pp. D590-6.
+
 Robeson, Michael S., et al. “RESCRIPt: Reproducible Sequence Taxonomy Reference Database Management.” PLoS Computational Biology, Public Library of Science, 2021, doi:10.1371/journal.pcbi.1009581.
+
 Rognes, Torbjørn, et al. “VSEARCH: A Versatile Open Source Tool for Metagenomics.” PeerJ, vol. 4, PeerJ Inc., 2016, p. e2584, doi:10.7717/peerj.2584.
+
 Wes McKinney. “ Data Structures for Statistical Computing in Python .” Proceedings of the 9th Python in Science Conference , edited by Stéfan van der Walt and Jarrod Millman, 2010, pp. 51–56.
 ---. “ Data Structures for Statistical Computing in Python .” Proceedings of the 9th Python in Science Conference , edited by Stéfan van der Walt and Jarrod Millman, 2010, pp. 51–56.
 ---. “ Data Structures for Statistical Computing in Python .” Proceedings of the 9th Python in Science Conference , edited by Stéfan van der Walt and Jarrod Millman, 2010, pp. 51–56.
