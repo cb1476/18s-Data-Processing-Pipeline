@@ -1,0 +1,45 @@
+﻿These are some other commands outside of my scripts that I needed to use to install the resources required to run the scripts: 
+
+------------------------------------------------------------------------------------------------
+
+To install conda into my home directory:
+“conda config --prepend pkgs_dirs /home/users/cb1476/.conda/pkgs”
+“conda config --prepend envs_dirs /home/users/cb1476/.conda/envs”
+
+To install qiime2 in conda environment:
+“conda env create -n qiime2-amplicon-2024.5 --file https://data.qiime2.org/distro/amplicon/qiime2-amplicon-2024.5-py39-linux-conda.yml”
+                
+To activate the environment, use:
+“conda activate qiime2-amplicon-2024.5”
+                
+To deactivate the active environment, use:
+“conda deactivate”
+
+
+To finalize conda and qiime2 installation:
+        
+        First: install devtools, conda-forge, and other packages
+		1. “conda install bioconda::bioconductor-phyloseq r-qiime2r” 
+		2. “conda-forge::r-tidyverse conda-forge::r-devtools”
+
+
+        Second: install latest conda-forge update
+                “conda update -n base -c conda-forge conda”
+                        → proceed with installation: “y”
+
+Activating the genomics environment:
+	“conda activate genomics”
+
+Resources to make upset plot:
+	“conda create -n plotting python=3.10”
+	“conda install -c conda-forge upsetplot matplotlib pandas”
+	“conda activate plotting”
+	“conda install -c conda-forge upsetplot”
+
+Other steps (outside of the python script) needed to run the python script:
+	“touch upset_python_script.sh”
+	“touch prepare_upset_input.py”
+	“python prepare_upset_input.py”
+
+Then, to run the python script: 
+	“python upset_plot.py /home/users/cb1476/exported_feature_table/feature-table.tsv /home/users/cb1476/upset_plot.png”

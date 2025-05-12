@@ -1,0 +1,41 @@
+#! /usr/bin/env python3
+
+import pandas as pd
+from upsetplot import UpSet # conda activate plotting
+from upsetplot import from_contents
+import matplotlib.pyplot as plt
+import matplotlib
+import sys
+from csv import DictReader
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
+contents_dict = {}
+# import binning tsv into a contents dictionary
+bin_dict = DictReader(open(sys.argv[1]), delimiter="\t")
+for row in bin_dict:
+    curr_bin = ""
+    for sample, count in row.items():
+        # if sample is bin, count is actually the sequence of interest
+        if sample == "BIN":
+            contents_dict.setdefault(count, [])
+            curr_bin = count
+            continue
+
+        # otherwise, sample is valid and will have count to add to contents
+        if float(count) > 0 and sample not in contents_dict[curr_bin]:
+            contents_dict[curr_bin].append(sample)
+
+pathogens = from_contents(contents_dict)
+#pathogens.to_csv("pathogens.csv")
+matplotlib.rcParams["font.size"] = 7.25
+ax_dict = UpSet(pathogens, subset_size="count", show_counts="%d", show_percentages=True, sort_categories_by="-input", sort_by="-degree").plot()
+
+# Save the plot to a file
+plt.savefig(sys.argv[2])
+
+# Show the plot
+plt.show()
+
+
+
