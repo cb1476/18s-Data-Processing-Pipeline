@@ -82,7 +82,8 @@ Collin Blake
 ## Findings
 <img src="https://github.com/user-attachments/assets/cc8970d9-6114-4b84-b157-889026245706" alt="Description" width="300" height="300"/>
 <img src="https://github.com/user-attachments/assets/bc6ca20c-2bb6-4f81-aac7-6d8e47c356f2" alt="Description" width="400" height="300"/>
-Figures 1 and 2 (Taxonomic barplot with legend)
+
+&nbsp;&nbsp;&nbsp;&nbsp;Figure 1: Taxonomic barplot with legend. 
 
 
 ## References
